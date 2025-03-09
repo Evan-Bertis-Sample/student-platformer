@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     [field: SerializeField] public PlayerState State { get; private set; }
 
     public Vector3 MoveInput { get; private set; }
-    public bool JumpInput {get ; private set; }
+    public bool JumpInput { get; private set; }
 
     void Start()
     {
@@ -54,7 +54,8 @@ public class PlayerController : MonoBehaviour
         {
             _rb.AddForce(new Vector2(0, JumpInput ? JumpForce : 0));
         }
-        else {
+        else
+        {
             State = PlayerState.JUMPING;
             return;
         }
