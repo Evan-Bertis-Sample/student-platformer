@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d2f03a90871e954393ed6eb79dc49a5, type: 3}
+  m_Name: WalkingAnimation
+  m_EditorClassIdentifier: 
+  Frames:
+  - {fileID: -298229580, guid: 0e616798c53615b45b4f828db6733c9d, type: 3}
+  - {fileID: -980926562, guid: 0e616798c53615b45b4f828db6733c9d, type: 3}
+  - {fileID: -24462642, guid: 0e616798c53615b45b4f828db6733c9d, type: 3}
+  - {fileID: -1324168241, guid: 0e616798c53615b45b4f828db6733c9d, type: 3}
+  - {fileID: 2067056413, guid: 0e616798c53615b45b4f828db6733c9d, type: 3}
+  - {fileID: 1083477813, guid: 0e616798c53615b45b4f828db6733c9d, type: 3}
+  - {fileID: 1764660329, guid: 0e616798c53615b45b4f828db6733c9d, type: 3}
+  - {fileID: 538961769, guid: 0e616798c53615b45b4f828db6733c9d, type: 3}
+  FramesPerSecond: 12

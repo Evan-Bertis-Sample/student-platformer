@@ -3,40 +3,51 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer), typeof(PlayerController))]
 public class PlayerAnimation : MonoBehaviour
 {
-    public List<Sprite> WalkingAnimation = new List<Sprite>();
-    public List<Sprite> IdleAnimation = new List<Sprite>();
+    public SpriteAnimation IdleAnimation;
+    public SpriteAnimation WalkAnimation;
+    public SpriteAnimation JumpAnimation;
+
+    private SpriteAnimation _instanceIdleAnimation;
+    private SpriteAnimation _instanceWalkAnimation;
+    private SpriteAnimation _instanceJumpAnimation;
 
     public SpriteRenderer Renderer;
     public PlayerController Controller;
 
-    public float FramesPerSecond = 12;
-    private int _index;
-    private float _timeSinceLastFrame;
+    void Start()
+    {
+        Renderer = GetComponent<SpriteRenderer>();
+        Controller = GetComponent<PlayerController>();
 
-    private float FrameTime => 1 / FramesPerSecond;
-
-
-    private List<Sprite> _currentAnimation = new List<Sprite>();
-
-    public void Start() {
-        _index = 0;
+        _instanceIdleAnimation = Instantiate(IdleAnimation);
+        _instanceWalkAnimation = Instantiate(WalkAnimation);
+        _instanceJumpAnimation = Instantiate(JumpAnimation);
     }
 
-    public void Update() {
-        _currentAnimation = (Controller.State == PlayerController.PlayerState.IDLE) ? 
-            IdleAnimation : WalkingAnimation;
-
-        if (Time.time - _timeSinceLastFrame > FrameTime) {
-            _index = (_index + 1 ) % _currentAnimation.Count;
-            _timeSinceLastFrame = Time.time;
+    void Update() {
+        SpriteAnimation currentAnimation = null;
+        switch (Controller.State) {
+            case PlayerController.PlayerState.IDLE:
+                currentAnimation = _instanceIdleAnimation;
+                break;
+            case PlayerController.PlayerState.WALKING:
+                currentAnimation = _instanceWalkAnimation;
+                break;
+            case PlayerController.PlayerState.JUMPING:
+                currentAnimation = _instanceJumpAnimation;
+                break;
         }
 
-
-        Renderer.sprite = _currentAnimation[_index];
+        Renderer.sprite = currentAnimation.Play();
         
         if (Controller.MoveInput.x != 0)
             Renderer.flipX = (Controller.MoveInput.x < 0);
+
+        if (Controller.IsGrounded()) {
+            _instanceJumpAnimation.Reset();
+        }
     }
 }

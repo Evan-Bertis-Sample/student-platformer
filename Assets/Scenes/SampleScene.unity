@@ -155,7 +155,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 201c136a77f044c4293fbec2238bba48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 10
+  Speed: 5
+  JumpForce: 300
+  GroundRaycastDistance: 0.55
+  GroundLayer:
+    serializedVersion: 2
+    m_Bits: 64
   <State>k__BackingField: 0
 --- !u!212 &388054246
 SpriteRenderer:
@@ -308,26 +313,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4cf5e6c19c7362438d92355bdb9c1e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WalkingAnimation:
-  - {fileID: -298229580, guid: 0e616798c53615b45b4f828db6733c9d, type: 3}
-  - {fileID: -980926562, guid: 0e616798c53615b45b4f828db6733c9d, type: 3}
-  - {fileID: -24462642, guid: 0e616798c53615b45b4f828db6733c9d, type: 3}
-  - {fileID: -1324168241, guid: 0e616798c53615b45b4f828db6733c9d, type: 3}
-  - {fileID: 2067056413, guid: 0e616798c53615b45b4f828db6733c9d, type: 3}
-  - {fileID: 1083477813, guid: 0e616798c53615b45b4f828db6733c9d, type: 3}
-  - {fileID: 1764660329, guid: 0e616798c53615b45b4f828db6733c9d, type: 3}
-  - {fileID: 538961769, guid: 0e616798c53615b45b4f828db6733c9d, type: 3}
-  IdleAnimation:
-  - {fileID: -203933350, guid: 74857f0c871c662418010500bea95fd0, type: 3}
-  - {fileID: -33681978, guid: 74857f0c871c662418010500bea95fd0, type: 3}
-  - {fileID: 1231711496, guid: 74857f0c871c662418010500bea95fd0, type: 3}
-  - {fileID: -1227772435, guid: 74857f0c871c662418010500bea95fd0, type: 3}
-  - {fileID: -1940982879, guid: 74857f0c871c662418010500bea95fd0, type: 3}
-  - {fileID: 93895545, guid: 74857f0c871c662418010500bea95fd0, type: 3}
-  - {fileID: -950273160, guid: 74857f0c871c662418010500bea95fd0, type: 3}
-  Renderer: {fileID: 388054246}
-  Controller: {fileID: 388054245}
-  FramesPerSecond: 3
+  IdleAnimation: {fileID: 11400000, guid: c4da8b516a6d9ae4f8321f153005b14e, type: 2}
+  WalkAnimation: {fileID: 11400000, guid: 20630ccbc4a128a4e8ce0045c8790fc8, type: 2}
+  JumpAnimation: {fileID: 11400000, guid: e34021f9e5f54d640bb594082fd03217, type: 2}
+  Renderer: {fileID: 0}
+  Controller: {fileID: 0}
 --- !u!1 &495518217
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,7 +330,7 @@ GameObject:
   - component: {fileID: 495518220}
   - component: {fileID: 495518219}
   - component: {fileID: 495518221}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
